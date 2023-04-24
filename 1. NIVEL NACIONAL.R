@@ -21,17 +21,17 @@ library(plotly)
 valid_codes <- c("1","2","3","4","5","6","7","8","9","10","11","14_1","14_2","14_3","31")
 valid_codes2 <- c("12","13","15","16","17","18","19","20","21","22_1","22_2","22_3","22_4","22_5","22_6","22_7","23","24","25","26","27","28_1","28_2","28_3","28_4","28_5","28_6","28_7","28_8","28_9","28_10","29_1","29_2","29_3","29_4","29_5","29_6","29_7","29_8","30","32")
 
-datos_nacionales <-readxl::read_excel("C:/Users/Lenovo/Desktop/z. Prueba para sistemas/NN-DATOS/Datos_NACIONALES.xlsx")
+datos_nacionales <-readxl::read_excel("https://github.com/belisariootano/mapa-prueba24-04/blob/main/NN-DATOS/Datos_NACIONALES.xlsx")
 datos_nacionales<- datos_nacionales %>%
   filter(anio >= 2017 & anio <= 2021)
-datos_provinciales <-readxl::read_excel("C:/Users/Lenovo/Desktop/z. Prueba para sistemas/NN-DATOS/Datos_PROVINCIALES.xlsx")
+datos_provinciales <-readxl::read_excel("https://github.com/belisariootano/mapa-prueba24-04/blob/main/NN-DATOS/Datos_PROVINCIALES.xlsx")
 datos_provinciales <- datos_provinciales %>%
   mutate(provincia_nombre = ifelse(provincia_nombre == "Ciudad Autónoma de Buenos Aires", "CABA", provincia_nombre))
 datos_provinciales <- datos_provinciales %>%
   mutate(provincia_nombre = ifelse(provincia_nombre== "Tierra del Fuego, Antártida e Islas del Atlántico Sur", "Tierra del Fuego", provincia_nombre))
-geo_provincias <- read_sf("C:/Users/Lenovo/Desktop/z. Prueba para sistemas/NN-DATOS/SHP Argentina Prov-Dpto/Provincias.shp")%>% filter(!(ID %in% c(100)))
-geo_departamentos <- read_sf("C:/Users/Lenovo/Desktop/z. Prueba para sistemas/NN-DATOS/SHP Argentina Prov-Dpto/Dpto segun SNIC.shp")
-codificacion_snic<- readxl::read_excel("C:/Users/Lenovo/Desktop/z. Prueba para sistemas/NN-DATOS/codificacion_snic.xlsx")
+geo_provincias <- read_sf("https://github.com/belisariootano/mapa-prueba24-04/blob/main/NN-DATOS/SHP%20Argentina%20Prov-Dpto/Provincias.shp")%>% filter(!(ID %in% c(100)))
+geo_departamentos <- read_sf("https://github.com/belisariootano/mapa-prueba24-04/blob/main/NN-DATOS/SHP%20Argentina%20Prov-Dpto/Dpto%20segun%20SNIC.shp")
+codificacion_snic<- readxl::read_excel("https://github.com/belisariootano/mapa-prueba24-04/blob/main/NN-DATOS/codificacion_snic.xlsx")
 
 ui <- fluidPage(
   tags$div(
